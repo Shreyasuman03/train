@@ -1,0 +1,21 @@
+<div class="container">
+<h1>{{ title }}</h1>
+
+<!-- Seat booking input -->
+<div>
+  <label for="seats">Enter number of seats to book (1-7):</label>
+  <input type="number" [(ngModel)]="requestedSeats" min="1" max="7"/>
+  <button (click)="reserveSeats()">Reserve Seats</button>
+</div>
+
+<!-- Display seats -->
+<h2>Seat Layout</h2>
+<div class="seat-grid">
+  <span *ngFor="let seat of availableSeats; let i = index">
+    <button 
+      [ngClass]="{ 'seat': true, 'booked': seat }" 
+      [disabled]="seat" 
+      class="seat">{{ i + 1 }}</button>
+  </span>
+</div>
+</div>
